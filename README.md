@@ -41,4 +41,4 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## :page_facing_up: Detalhes de implementação:
 - O site esta consumindo uma API Rest desenvolvida também na semana oministack.
 - O sistema foi desenvolvido usando HTML e CSS
-- O link do repositorio [oficial](https://github.com/Rocketseat/semana-omnistack-11)
+- [O link do repositorio oficial](https://github.com/Rocketseat/semana-omnistack-11)
