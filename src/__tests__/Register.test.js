@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
-import { MemoryRouter, BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import api from '../services/api';
 import Register from '../pages/Register';
 
@@ -23,9 +23,9 @@ describe('@screen/Register', () => {
   });
   test('#there must be 5 inputs and a button', () => {
     const { getByPlaceholderText, getByText } = render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Register />
-      </BrowserRouter>
+      </MemoryRouter>
     );
 
     const inputNomeOng = getByPlaceholderText(/nome da ong/i);
@@ -45,9 +45,9 @@ describe('@screen/Register', () => {
 
   test('#should register a new ONG', async () => {
     const { getByPlaceholderText, getByText } = render(
-      <BrowserRouter>
+      <MemoryRouter>
         <Register />
-      </BrowserRouter>
+      </MemoryRouter>
     );
     apiMock.onPost('/ongs').reply(200, {
       id: '58fd4cab',
@@ -71,5 +71,29 @@ describe('@screen/Register', () => {
     await actWait();
     expect(window.alert).toBeCalledTimes(1);
     expect(window.alert).toHaveBeenCalledWith('Seu ID de acess: 58fd4cab');
+  });
+
+  test('should not allow registering the user', async () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <Register />
+      </MemoryRouter>
+    );
+    apiMock.onPost('/ongs').reply(400, {
+      statusCode: 400,
+      error: 'Bad Request',
+      message: '"name" is required',
+      validation: {
+        source: 'body',
+        keys: ['name'],
+      },
+    });
+    const buttonCadastrar = getByText(/cadastrar/i);
+    fireEvent.click(buttonCadastrar);
+    await actWait();
+    expect(window.alert).toBeCalledTimes(1);
+    expect(window.alert).toHaveBeenCalledWith(
+      'Erro no cadastro, tente novamente.'
+    );
   });
 });
