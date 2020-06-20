@@ -7,7 +7,7 @@ import './styles.css';
 import { Link, useHistory } from 'react-router-dom';
 
 export function Logon() {
-  const [id, setId] = useState();
+  const [id, setId] = useState('');
   const history = useHistory();
   const handleLogin = async (e) => {
     e.preventDefault();
