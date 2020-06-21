@@ -52,7 +52,7 @@ export default function Profile() {
       <h1>Casos Cadastrados</h1>
       <ul>
         {incidents.map((incident) => (
-          <li key={incident.id}>
+          <li data-testid="incident" key={incident.id}>
             <strong>CASO:</strong>
             <p>{incident.title}</p>
             <strong>DESCRIÇÂO:</strong>

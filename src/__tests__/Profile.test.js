@@ -22,7 +22,7 @@ describe('#screen/Profile', () => {
     jest.spyOn(window, 'alert').mockImplementation(() => {});
   });
   test('should load the api data and show it on the screen', async () => {
-    const { getAllByText } = render(
+    const { getAllByTestId } = render(
       <MemoryRouter>
         <Profile />
       </MemoryRouter>
@@ -66,13 +66,10 @@ describe('#screen/Profile', () => {
       },
     ]);
     await actWait();
-    expect(getAllByText('Caso 1')).toHaveLength(4);
-    expect(getAllByText('R$ 120.00')).toHaveLength(4);
-    expect(getAllByText('Caso 2')).toHaveLength(1);
-    expect(getAllByText('R$ 130.00')).toHaveLength(1);
+    expect(getAllByTestId('incident')).toHaveLength(5);
   });
   test('shound delete incidente', async () => {
-    const { getAllByText, getByTestId } = render(
+    const { getByTestId, getAllByTestId } = render(
       <MemoryRouter>
         <Profile />
       </MemoryRouter>
@@ -96,12 +93,10 @@ describe('#screen/Profile', () => {
     ]);
     apiMock.onDelete('incidents/2').reply(204);
     await actWait();
-    expect(getAllByText('Caso para ser deletado')).toHaveLength(2);
-    expect(getAllByText('R$ 150.00')).toHaveLength(2);
+    expect(getAllByTestId('incident')).toHaveLength(2);
     fireEvent.click(getByTestId('remove-button-2'));
     await actWait();
 
-    expect(getAllByText('Caso para ser deletado')).toHaveLength(1);
-    expect(getAllByText('R$ 150.00')).toHaveLength(1);
+    expect(getAllByTestId('incident')).toHaveLength(1);
   });
 });
