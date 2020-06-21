@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useHistory } from 'react-router-dom';
 import api from '../services/api';
 import NewIncident from '../pages/NewIncident';
 
@@ -17,9 +17,23 @@ const actWait = async (amount = 0) => {
   });
 };
 
+jest.mock('react-router-dom', () => {
+  const historyObj = {
+    push: jest.fn(),
+  };
+
+  return {
+    ...jest.requireActual('react-router-dom'),
+    useHistory: () => historyObj,
+  };
+});
+
 describe('@screen/logon', () => {
   beforeEach(() => {
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest
+      .spyOn(window, 'alert')
+      .mockImplementation(() => {})
+      .mockClear();
   });
 
   test('should have two input and one button', () => {
@@ -39,7 +53,7 @@ describe('@screen/logon', () => {
     expect(buttonCadastrar).toBeTruthy();
   });
 
-  test('should not create new user', async () => {
+  test('should not create new incident', async () => {
     const { getByText } = render(
       <MemoryRouter>
         <NewIncident />
@@ -63,5 +77,28 @@ describe('@screen/logon', () => {
     expect(window.alert).toHaveBeenCalledWith(
       'Erro ao cadastrar caso, tente novamente'
     );
+  });
+
+  test('should allow register new incident', async () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <NewIncident />
+      </MemoryRouter>
+    );
+    apiMock.onPost('incidents').reply(200, {
+      id: 34,
+    });
+    const pushSpy = jest
+      .spyOn(useHistory(), 'push')
+      .mockImplementation()
+      .mockClear();
+    await actWait();
+    const buttonCadastrar = getByText('Cadastrar');
+
+    fireEvent.click(buttonCadastrar);
+    await actWait();
+    expect(pushSpy).toHaveBeenCalled();
+    expect(pushSpy).toHaveBeenCalledTimes(1);
+    expect(pushSpy).toHaveBeenCalledWith('/profile');
   });
 });
