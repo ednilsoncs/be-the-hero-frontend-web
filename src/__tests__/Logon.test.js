@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, act, cleanup } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
 import { MemoryRouter, useHistory } from 'react-router-dom';
 import api from '../services/api';
