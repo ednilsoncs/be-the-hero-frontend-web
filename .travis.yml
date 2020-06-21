@@ -8,5 +8,12 @@ cache:
 script:
   - npm test
   - npm run build
+
+deploy:
+  provider: surge
+  skip_cleanup: true
+  domain: be-the-hero-web.surge.sh
+  project: ./build/
+
 on:
   branch: master
