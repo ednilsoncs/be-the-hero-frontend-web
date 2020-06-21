@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FiLogIn } from 'react-icons/fi';
+import { Link, useHistory } from 'react-router-dom';
 import herosImg from '../../assets/heroes.png';
 import logoImg from '../../assets/logo.svg';
 import api from '../../services/api';
 import './styles.css';
-import { Link, useHistory } from 'react-router-dom';
 
-export function Logon() {
+function Logon() {
   const [id, setId] = useState('');
   const history = useHistory();
   const handleLogin = async (e) => {

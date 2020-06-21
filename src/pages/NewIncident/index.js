@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
-import logoImg from "../../assets/logo.svg";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import logoImg from '../../assets/logo.svg';
 
-import "./styles.css";
-import api from "../../services/api";
+import './styles.css';
+import api from '../../services/api';
 
 export default function NewIncident() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [value, setValue] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [value, setValue] = useState('');
   const history = useHistory();
-  const ongId = localStorage.getItem("ongId");
+  const ongId = localStorage.getItem('ongId');
   const handleNewIncident = async (e) => {
     e.preventDefault();
     const body = {
@@ -20,14 +20,14 @@ export default function NewIncident() {
       value,
     };
     try {
-      await api.post("incidents", body, {
+      await api.post('incidents', body, {
         headers: {
           Authorization: ongId,
         },
       });
-      history.push("/profile");
+      history.push('/profile');
     } catch (e) {
-      alert("Erro ao cadastrar caso, tente novamente");
+      alert('Erro ao cadastrar caso, tente novamente');
     }
   };
   return (
