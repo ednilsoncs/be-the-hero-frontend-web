@@ -6,7 +6,7 @@ ONG's (Organizações não governamentais) que precisam de ajuda.</p>
 
 ## Status:
 [![Coverage Status](https://coveralls.io/repos/github/EdnilsonCS/be-the-hero-frontend-web/badge.svg)](https://coveralls.io/github/EdnilsonCS/be-the-hero-frontend-web)
-![Travis Status](https://travis-ci.org/EdnilsonCS/be-the-hero-frontend-web.svg?branch=master)
+[![Travis Status](https://travis-ci.org/EdnilsonCS/be-the-hero-frontend-web.svg?branch=master)](https://travis-ci.org/github/EdnilsonCS/be-the-hero-frontend-web)
 
 ## :clipboard: Funcionalidades:
 <table>
