@@ -34,6 +34,9 @@ describe('@screen/logon', () => {
       .spyOn(window, 'alert')
       .mockImplementation(() => {})
       .mockClear();
+    localStorage.clear();
+    jest.resetAllMocks();
+    localStorage.setItem.mockClear();
   });
 
   test('should have two input and one button', () => {
@@ -100,5 +103,31 @@ describe('@screen/logon', () => {
     expect(pushSpy).toHaveBeenCalled();
     expect(pushSpy).toHaveBeenCalledTimes(1);
     expect(pushSpy).toHaveBeenCalledWith('/profile');
+  });
+
+  test('should allow get ONG ID from Local storage', async () => {
+    render(
+      <MemoryRouter>
+        <NewIncident />
+      </MemoryRouter>
+    );
+    expect(localStorage.getItem).toHaveBeenCalledTimes(1);
+  });
+  test('should allow edit inputs in form', async () => {
+    const { getByPlaceholderText } = render(
+      <MemoryRouter>
+        <NewIncident />
+      </MemoryRouter>
+    );
+    const inputTitulo = getByPlaceholderText(/Título do caso/i);
+    const textAreaDescricao = getByPlaceholderText(/Descrição/i);
+    const inputValor = getByPlaceholderText(/Valor em reais/i);
+
+    fireEvent.change(inputTitulo, { target: { value: 'Teste' } });
+    fireEvent.change(textAreaDescricao, { target: { value: 'sasassaas' } });
+    fireEvent.change(inputValor, { target: { value: '450' } });
+    expect(inputTitulo.attributes.getNamedItem('value').value).toEqual('Teste');
+    expect(textAreaDescricao.value).toEqual('sasassaas');
+    expect(inputValor.attributes.getNamedItem('value').value).toEqual('450');
   });
 });
