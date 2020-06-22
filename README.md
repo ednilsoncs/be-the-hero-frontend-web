@@ -37,8 +37,19 @@ para visualizar no navegador.
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
+- [Eslint](https://eslint.org/)
+- [Jest](https://jestjs.io/)
 
+## :wrench: Ferramentas
+- [Surge](https://surge.sh/)
+- [Travis](https://travis-ci.org/)
+
+## :mag_right: Observações
+- Para colaborar com o repositorio você precisa escrever os testes.
+- Se algum teste estiver quebrado não será possivel fazer o marge.
+- No momento que seu pull request for aprovado ele será automaticamente enviado para produção pelo travis.
 ## :page_facing_up: Detalhes de implementação:
 - O site esta consumindo uma API Rest desenvolvida também na semana oministack.
-- O sistema foi desenvolvido usando HTML e CSS
+- O sistema foi desenvolvido usando HTML e CSS.
+- [Link para o projeto online](be-the-hero-web.surge.sh)
 - [O link do repositorio oficial](https://github.com/Rocketseat/semana-omnistack-11)
