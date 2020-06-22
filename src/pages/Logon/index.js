@@ -16,7 +16,7 @@ function Logon() {
       await localStorage.setItem('ongName', data.name);
       await localStorage.setItem('ongId', id);
       history.push('/profile');
-    } catch (e) {
+    } catch (E) {
       alert('Falha no login');
     }
   };

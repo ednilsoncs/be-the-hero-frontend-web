@@ -94,4 +94,26 @@ describe('@screen/logon', () => {
     expect(pushSpy).toHaveBeenCalledTimes(1);
     expect(pushSpy).toHaveBeenCalledWith('/profile');
   });
+
+  test('#should show mensagem with erro in login', async () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <Logon />
+      </MemoryRouter>
+    );
+
+    apiMock.onPost('sessions').reply(400, {
+      statusCode: 400,
+      error: 'Bad Request',
+      message: '"id" is not allowed to be empty',
+      validation: {
+        source: 'body',
+        keys: ['id'],
+      },
+    });
+    fireEvent.click(getByText(/entrar/i));
+    await actWait();
+    expect(window.alert).toBeCalledTimes(1);
+    expect(window.alert).toHaveBeenCalledWith('Falha no login');
+  });
 });
