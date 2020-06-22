@@ -8,6 +8,10 @@ ONG's (Organizações não governamentais) que precisam de ajuda.</p>
 [![Coverage Status](https://coveralls.io/repos/github/EdnilsonCS/be-the-hero-frontend-web/badge.svg)](https://coveralls.io/github/EdnilsonCS/be-the-hero-frontend-web)
 [![Travis Status](https://travis-ci.org/EdnilsonCS/be-the-hero-frontend-web.svg?branch=master)](https://travis-ci.org/github/EdnilsonCS/be-the-hero-frontend-web)
 
+## :mag_right: Demo:
+
+- [Demo](be-the-hero-web.surge.sh)
+
 ## :clipboard: Funcionalidades:
 <table>
   <tr>
@@ -55,5 +59,4 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## :page_facing_up: Detalhes de implementação:
 - O site esta consumindo uma API Rest desenvolvida também na semana oministack.
 - O sistema foi desenvolvido usando HTML e CSS.
-- [Link para o projeto online](be-the-hero-web.surge.sh)
 - [O link do repositorio oficial](https://github.com/Rocketseat/semana-omnistack-11)
