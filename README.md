@@ -4,6 +4,9 @@
 <p> O BeTheHero é um projeto que visa conectar pessoas que desejam fazer contribuições monetárias a 
 ONG's (Organizações não governamentais) que precisam de ajuda.</p>
 
+# Status:
+[![Coverage Status](https://coveralls.io/repos/github/EdnilsonCS/be-the-hero-frontend-web/badge.svg)](https://coveralls.io/github/EdnilsonCS/be-the-hero-frontend-web)
+
 ## :clipboard: Funcionalidades:
 <table>
   <tr>
