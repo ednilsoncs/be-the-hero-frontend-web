@@ -10,7 +10,7 @@ ONG's (Organizações não governamentais) que precisam de ajuda.</p>
 
 ## :mag_right: Demo:
 
-- [Demo](be-the-hero-web.surge.sh)
+- [Demo](https://be-the-hero-web.surge.sh)
 
 ## :clipboard: Funcionalidades:
 <table>
