@@ -30,7 +30,7 @@ jest.mock('react-router-dom', () => {
 
 describe('@screen/logon', () => {
   beforeEach(() => {
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest.spyOn(window, 'alert').mockImplementation(() => { });
   });
 
   test('#should store on-site storage', async () => {
@@ -95,7 +95,7 @@ describe('@screen/logon', () => {
     expect(pushSpy).toHaveBeenCalledWith('/profile');
   });
 
-  test('#should show mensagem with erro in login', async () => {
+  test('#should show mensagem with erro in logon', async () => {
     const { getByText } = render(
       <MemoryRouter>
         <Logon />
